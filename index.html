@@ -13,6 +13,7 @@
       align-items: center;
       width: 100%;
       height: 100vh;
+      align-content: center;
      }
       input {
         width: 100%;
@@ -26,7 +27,12 @@
         max-height: 20rem;
         overflow: hidden;
         overflow-y: scroll;
-        width: 50%;
+        width: 45%;
+        margin-top: 1rem;
+        border: 1px solid gray;
+        padding: 1rem;
+        border-radius: 5px;
+        display: none;
       }
       .countryName:hover {
         background-color: rgb(69, 69, 255);
@@ -19275,6 +19281,7 @@
     },
   ];
 let input = document.querySelector("input")
+let suggestionDiv=document.getElementById("showSuggestions")
   let showSuggestions = document.getElementById("showSuggestions");
   function searchCountry() {
     // Afghanistan
@@ -19287,15 +19294,16 @@ let input = document.querySelector("input")
     );
     showSuggestions.innerHTML = "";
     if (keyword.length > 0) {
+     suggestionDiv.style.display="block"
       filterData.map((item) => {
         let p = document.createElement("p");
         p.setAttribute("class", "countryName");
         p.innerText = item.countryName;
-
         showSuggestions.append(p);
       });
     } else {
       showSuggestions.innerHTML = "";
+      suggestionDiv.style.display="none"
     }
   }
 
